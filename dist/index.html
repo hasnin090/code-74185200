@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>T.A.C - إدارة الحسابات والعقارات</title>
+    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <link rel="apple-touch-icon" href="/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // تثبيت الوضع الداكن دائماً - التطبيق لا يتأثر بإعدادات المتصفح
+      document.documentElement.classList.add('dark');
+      // Apply the saved accent color BEFORE React mounts so users never see a
+      // flash of the wrong palette. App.tsx still re-applies it after auth in
+      // case the value changed in the database.
+      try {
+        var ac = localStorage.getItem('accentColor') || 'amber';
+        document.documentElement.setAttribute('data-accent-color', ac);
+      } catch (e) {
+        document.documentElement.setAttribute('data-accent-color', 'amber');
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-f47326a7.js"></script>
+    <link rel="stylesheet" href="/assets/index-d9aba247.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    
+  </body>
+</html>

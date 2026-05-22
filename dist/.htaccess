@@ -1,0 +1,76 @@
+# ─── HTTPS Redirect ───────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  RewriteBase /
+
+  # Serve existing files directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Serve existing directories directly
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ─── Security Headers ─────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Content Security Policy
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://tariq60.com wss://tariq60.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+  # Prevent clickjacking
+  Header set X-Frame-Options "DENY"
+
+  # Prevent MIME sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # XSS protection (legacy browsers)
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions policy
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+  # HSTS (force HTTPS for 1 year)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Remove server info
+  Header unset X-Powered-By
+  Header unset Server
+</IfModule>
+
+# ─── MIME Types ───────────────────────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType image/svg+xml .svg
+</IfModule>
+
+# ─── Cache Control ────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML - no cache (SPA entry point)
+  ExpiresByType text/html "access plus 0 seconds"
+  # Assets with hash in filename - cache 1 year
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ─── Block sensitive files ────────────────────────────────────────────────────
+<FilesMatch "(\.env|\.git|package\.json|package-lock\.json|vite\.config\.*|tsconfig\..*)$">
+  Require all denied
+</FilesMatch>

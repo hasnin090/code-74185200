@@ -1,0 +1,1 @@
+import{v as t}from"./index-f47326a7.js";const a=(t,a)=>{};let e=null;try{const t=localStorage.getItem("auth_user");t&&(e=JSON.parse(t))}catch(l){}const s=async(a,s,o)=>{try{await t.post("/activity-logs",{userId:null==e?void 0:e.id,action:a,entityType:"general",details:s,interfaceMode:o})}catch(l){null==e||e.id}};export{a as d,s as l};

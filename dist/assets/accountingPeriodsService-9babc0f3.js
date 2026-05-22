@@ -1,0 +1,1 @@
+import{v as o}from"./index-0b94b00c.js";const e={list:e=>o.get(`/accounting-periods?year=${e}`),close:(e,n,t)=>o.post("/accounting-periods/close",{year:e,month:n,notes:t}),reopen:(e,n,t)=>o.post("/accounting-periods/reopen",{year:e,month:n,notes:t})};export{e as accountingPeriodsService};

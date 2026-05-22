@@ -1,0 +1,1 @@
+import{j as t}from"./index-9fdfa910.js";import{A as i}from"./ActivityLogView-1072b7f0.js";import"./activityLogsService-d446ef3f.js";const e=()=>t.jsx(i,{interfaceMode:"projects",title:"سجل نشاطات المبيعات"});export{e as default};

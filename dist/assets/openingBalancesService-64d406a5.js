@@ -1,0 +1,1 @@
+import{v as e}from"./index-4d9eec07.js";const n={get:(n,t)=>{const s=new URLSearchParams({asOf:n});return t&&s.set("projectId",t),e.get(`/opening-balances?${s.toString()}`)},save:n=>e.post("/opening-balances",n)};export{n as openingBalancesService};

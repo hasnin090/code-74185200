@@ -1,0 +1,1 @@
+import{v as e}from"./index-f47326a7.js";const t={getAll:()=>e.get("/notifications"),getUnread:()=>e.get("/notifications/unread"),markAsRead:t=>e.patch(`/notifications/${t}/read`,{}),delete:t=>e.delete(`/notifications/${t}`),resolve:(t,i)=>e.patch(`/notifications/${t}/resolve`,{resolvedBy:i})};export{t as n};

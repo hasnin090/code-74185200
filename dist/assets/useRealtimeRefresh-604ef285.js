@@ -1,0 +1,1 @@
+import{r as s,ah as r}from"./index-be1cd902.js";function e(e){const[t,n]=s.useState(0);return s.useEffect(()=>{const s=()=>n(s=>s+1),t=e.map(e=>r.subscribe(e,s));return()=>{t.forEach(s=>s.unsubscribe())}},[e.join("|")]),t}export{e as u};

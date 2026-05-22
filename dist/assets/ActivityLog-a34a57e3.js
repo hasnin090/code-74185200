@@ -1,0 +1,1 @@
+import{j as e}from"./index-0b94b00c.js";import{A as i}from"./ActivityLogView-f940983b.js";import"./activityLogsService-32306b7c.js";const s=()=>e.jsx(i,{interfaceMode:"expenses",title:"سجل نشاطات المحاسبة",professional:!0});export{s as default};
