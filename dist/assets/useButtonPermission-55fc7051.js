@@ -1,1 +1,0 @@
-import{u as r,au as t}from"./index-9fdfa910.js";function n(n,u){const{currentUser:e}=r();if(!e)return!1;return t(e.role,n,u,e.customButtonAccess)}function u(){const{currentUser:n}=r();return{canShow:(r,u)=>{if(!n)return!1;return t(n.role,r,u,n.customButtonAccess)}}}export{n as a,u};
